@@ -9,13 +9,21 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TKuralTheme {
+            VStack {
+                Text("Hello, TKural!")
+                    .font(.largeTitle)
+                    .padding()
+                    .background(TKuralColors.purple40) // Ensure purple40 exists in TKuralColors
+                    .foregroundColor(TKuralColorScheme.light.onPrimary) // Fixed onPrimary reference
+            }
         }
-        .padding()
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
     }
 }
 

@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		872F1AFB2D572298004E5F92 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 872F1AFA2D572298004E5F92 /* Swinject */; };
+		87852A4B2D4F45330024A03A /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 87852A4A2D4F45330024A03A /* SQLite */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		87B16FA72D4F1059008E7A8D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -29,9 +34,22 @@
 		87B16FB02D4F1059008E7A8D /* ThirukuralUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThirukuralUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		872F1B022D572BF5004E5F92 /* Exceptions for "Thirukural" folder in "Thirukural" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 87B16F942D4F1059008E7A8D /* Thirukural */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		87B16F972D4F1059008E7A8D /* Thirukural */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				872F1B022D572BF5004E5F92 /* Exceptions for "Thirukural" folder in "Thirukural" target */,
+			);
 			path = Thirukural;
 			sourceTree = "<group>";
 		};
@@ -52,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87852A4B2D4F45330024A03A /* SQLite in Frameworks */,
+				872F1AFB2D572298004E5F92 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +132,8 @@
 			);
 			name = Thirukural;
 			packageProductDependencies = (
+				87852A4A2D4F45330024A03A /* SQLite */,
+				872F1AFA2D572298004E5F92 /* Swinject */,
 			);
 			productName = Thirukural;
 			productReference = 87B16F952D4F1059008E7A8D /* Thirukural.app */;
@@ -195,6 +217,10 @@
 			);
 			mainGroup = 87B16F8C2D4F1059008E7A8D;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				87852A492D4F45330024A03A /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+				872F1AF92D572298004E5F92 /* XCRemoteSwiftPackageReference "Swinject" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 87B16F962D4F1059008E7A8D /* Products */;
 			projectDirPath = "";
@@ -321,6 +347,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -376,6 +405,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -392,8 +424,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Thirukural/Preview Content\"";
+				DEVELOPMENT_TEAM = W5L5PDU89L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Thirukural/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -429,8 +463,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Thirukural/Preview Content\"";
+				DEVELOPMENT_TEAM = W5L5PDU89L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Thirukural/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -583,6 +619,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		872F1AF92D572298004E5F92 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.1;
+			};
+		};
+		87852A492D4F45330024A03A /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.15.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		872F1AFA2D572298004E5F92 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 872F1AF92D572298004E5F92 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+		87852A4A2D4F45330024A03A /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 87852A492D4F45330024A03A /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 87B16F8D2D4F1059008E7A8D /* Project object */;
 }

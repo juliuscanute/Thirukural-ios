@@ -1,0 +1,97 @@
+name: Build and Deploy iOS App
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'App version'
+        required: false
+        default: ''
+        type: string
+      notes:
+        description: 'Release notes'
+        required: false
+        default: 'New build with improvements and bug fixes'
+        type: string
+
+concurrency:
+  group: ios-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-ios:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clean up existing keychain
+        run: |
+          security delete-keychain signing_temp.keychain || true
+
+      - name: Install Apple Certificate
+        uses: apple-actions/import-codesign-certs@v1
+        with:
+          p12-file-base64: ${{ secrets.P12_CERTIFICATE }}
+          p12-password: ${{ secrets.P12_PASSWORD }}
+          keychain-password: ${{ secrets.KEYCHAIN_PASSWORD }}
+          create-keychain: true
+          keychain: signing_temp
+
+      - name: Download Provisioning Profiles
+        uses: apple-actions/download-provisioning-profiles@v1
+        with:
+          bundle-id: 'com.juliuscanute.thirukural'
+          profile-type: 'IOS_APP_STORE'
+          issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
+          api-key-id: ${{ secrets.APPSTORE_API_KEY_ID }}
+          api-private-key: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
+
+      - name: Set up Xcode version
+        run: sudo xcode-select -s /Applications/Xcode.app
+
+      - name: Build .xcarchive
+        run: |
+          xcodebuild -project Thirukural.xcodeproj \
+            -scheme Thirukural \
+            -sdk iphoneos \
+            -configuration Release \
+            -archivePath $PWD/build/Thirukural.xcarchive \
+            clean archive \
+            DEVELOPMENT_TEAM=${{ secrets.DEVELOPMENT_TEAM_ID }}
+        working-directory: .
+
+      - name: Export .ipa
+        run: |
+          xcodebuild -exportArchive \
+            -archivePath $PWD/build/Thirukural.xcarchive \
+            -exportPath $PWD/build/Export \
+            -exportOptionsPlist ExportOptions.plist
+        working-directory: .
+
+      - name: Upload IPA Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: thirukural-ipa
+          path: build/Export/*.ipa
+          retention-days: 1
+
+  upload-testflight:
+    needs: build-ios
+    runs-on: self-hosted
+    steps:
+      - name: Download IPA Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: thirukural-ipa
+          path: ./ipa
+
+      - name: Upload to TestFlight
+        uses: apple-actions/upload-testflight-build@v1
+        with:
+          app-path: ./ipa/Thirukural.ipa
+          issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
+          api-key-id: ${{ secrets.APPSTORE_API_KEY_ID }}
+          api-private-key: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}

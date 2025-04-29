@@ -49,9 +49,6 @@ jobs:
           api-key-id: ${{ secrets.APPSTORE_API_KEY_ID }}
           api-private-key: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
 
-      - name: Set up Xcode version
-        run: sudo xcode-select -s /Applications/Xcode.app
-
       - name: Build .xcarchive
         run: |
           xcodebuild -project Thirukural.xcodeproj \

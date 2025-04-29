@@ -29,7 +29,7 @@ jobs:
 
       - name: Clean up existing keychain
         run: |
-          security delete-keychain signing_temp.keychain || true
+          security delete-keychain signing_temp_kural.keychain || true
 
       - name: Install Apple Certificate
         uses: apple-actions/import-codesign-certs@v1

@@ -4,11 +4,14 @@
 <dict>
     <key>method</key>
     <string>app-store</string>
-    <key>uploadBitcode</key>
-    <true/>
-    <key>uploadSymbols</key>
-    <true/>
-    <key>compileBitcode</key>
-    <true/>
+    <key>teamID</key>
+    <string>W5L5PDU89L</string>
+    <key>signingStyle</key>
+    <string>manual</string>
+    <key>provisioningProfiles</key>
+    <dict>
+        <key>com.juliuscanute.Thirukural</key>
+        <string>Thirukural Distribution Profile</string>
+    </dict>
 </dict>
 </plist>

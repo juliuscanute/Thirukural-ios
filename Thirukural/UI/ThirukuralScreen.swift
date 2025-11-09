@@ -29,8 +29,8 @@ struct ThirukuralScreen: View {
                             Text(viewState.verse)
                                 .font(.body)
                             
-                            if let imageName = getImageResourceName(kuralNumber: viewState.kuralNumber) {
-                                Image(imageName)
+                            if let kuralImage = loadKuralImage(kuralNumber: viewState.kuralNumber) {
+                                kuralImage
                                     .resizable()
                                     .scaledToFit()
                             }
